@@ -23,4 +23,11 @@ npm start
 ```
 
 ### Stack utilizado
-* NodeJS
+* NodeJs
+* ExpressJs
+
+#### Extra (dependencies)
+* bcryptjs // encryption
+* dotenv // env vars
+* express-validator // validations
+* mongoose // db connection
