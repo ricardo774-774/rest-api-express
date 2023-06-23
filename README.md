@@ -1,7 +1,12 @@
 # Rest Api Skeleton In Express
 
-## Project Description
-This is a basic skeleton of a rest api project using express and handling user paths
+## Project Description V2
+This is a basic skeleton of a rest api project using express and handling user paths.
+This version is an upgrade update:
+- Control over the connection with db,
+- I added controlled validations with express-validator,
+- Password encryption with bcryptjs,
+- Helper and middleware folders
 
 ### Ejecutar en desarollo
 1. Clonar repositorio
