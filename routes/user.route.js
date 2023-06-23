@@ -6,13 +6,24 @@ const {
     emailExist, 
     idExist 
 } = require('../helpers/db-validator.helper');
+
 const { 
     getUsers, 
     createUser, 
     updateUser, 
     deleteUser
 } = require('../controllers/user.controller');
-const { validator } = require('../middlewares/validator.middleware');
+
+// const { validator } = require('../middlewares/validator.middleware');
+// const { validatorJWT } = require('../middlewares/validator-jwt.middleware');
+// const { adminRole, hasRole } = require('../middlewares/validator-rol.moddleware');
+
+const {
+    validator,
+    validatorJWT,
+    adminRole, 
+    hasRole
+} = require('../middlewares/index');
 
 const router = Router();
 
@@ -28,7 +39,6 @@ router.post('/', [
     validator
 ], createUser);
 
-
 router.put('/:id', [
     check('id', 'Id is not a MongoId').isMongoId(),
     check('id').custom( (id) => idExist(id) ),
@@ -37,6 +47,9 @@ router.put('/:id', [
 ], updateUser);
 
 router.delete('/:id', [
+    validatorJWT,
+    // adminRole,
+    hasRole('ADMIN_ROLE', 'SALES_ROLE'),
     check('id', 'Id is not a MongoId').isMongoId(),
     check('id').custom( (id) => idExist(id) ),
     validator

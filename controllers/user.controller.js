@@ -69,10 +69,15 @@ const deleteUser = async(req = request, res = response) => {
     // await User.findByIdAndDelete( id );
 
     // Changing the state makes the user "inactive"
-    await User.findByIdAndUpdate( id, {state: false} );
+    const user = await User.findByIdAndUpdate( id, {state: false}, {new: true} );
+
+    // const userAuth
+    const userAuth = req.user;
 
     res.json({
-        msg: `¡User ${id} Deleted!`
+        msg: `¡User ${id} Deleted!`,
+        user,
+        userAuth
     });
 };
 

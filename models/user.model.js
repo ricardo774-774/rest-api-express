@@ -34,10 +34,13 @@ const UserSchema = Schema({
 
 
 // Filter the info to show everything except __v, password
+// and replace name _id to uid.
 // But in Mongodb we are going to have the complete info saved.
 UserSchema.methods.toJSON = function() {
-    const { __v, password, ...user } = this.toObject();
+    const { __v, _id, password, ...user } = this.toObject();
+    user.uid = _id;
     return user;
 }
+
 
 module.exports = model( 'User', UserSchema );

@@ -1,7 +1,9 @@
 # Rest Api Skeleton In Express
 
-## Project Description
-This is a basic skeleton of a rest api project using express and handling user paths
+## Project Description V3
+This is a basic skeleton of a rest api project using express and handling user paths.
+In this version I am adding functions such as generating jwt with its respective validations and a new route called auth.
+I am also optimizing processes to make importing files clearer.
 
 ### Ejecutar en desarollo
 1. Clonar repositorio
@@ -31,3 +33,4 @@ npm start
 * dotenv // env vars
 * express-validator // validations
 * mongoose // db connection
+* jsonwebtoken // webtoken
