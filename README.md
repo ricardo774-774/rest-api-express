@@ -2,8 +2,8 @@
 
 ## Project Description V3
 This is a basic skeleton of a rest api project using express and handling user paths.
-In this version I am adding functions such as generating jwt with its respective validations and a new route called auth.
-I am also optimizing processes to make importing files clearer.
+Project updates:
+- Using google to authenticate users
 
 ### Ejecutar en desarollo
 1. Clonar repositorio
@@ -34,3 +34,4 @@ npm start
 * express-validator // validations
 * mongoose // db connection
 * jsonwebtoken // webtoken
+* google-auth-library // google validator token
