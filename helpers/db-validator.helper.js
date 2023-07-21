@@ -1,5 +1,9 @@
-const Role = require('../models/role.model');
-const User = require('../models/user.model');
+const { 
+    Category, 
+    Role, 
+    User,
+    Product
+} = require('../models');
 
 // Check that the role they sent us exists in the database
 const roleType = async(role = '') => {
@@ -18,15 +22,43 @@ const emailExist =  async(email = '') => {
 }
 
 // Check that the id exist in db
-const idExist = async(_id = '') => {
+const userIdExist = async(_id = '') => {
     const idFound = await User.findById(_id);
     if ( !idFound ) {
         throw new Error(`Id ${_id}, does not exist`);
+    }
+
+    if (!idFound.state) {
+        throw new Error(`Item ${_id}, was deleted`);
+    }
+}
+
+const categoryIdExist = async(_id = '') => {
+    const idFound = await Category.findById(_id)
+    if ( !idFound ) {
+        throw new Error(`Id ${_id}, does not exist`);
+    }
+
+    if (!idFound.state) {
+        throw new Error(`Item ${_id}, was deleted`);
+    }
+}
+
+const productIdExist = async(_id = '') => {
+    const idFound = await Product.findById(_id)
+    if ( !idFound ) {
+        throw new Error(`Id ${_id}, does not exist`);
+    }
+
+    if (!idFound.state) {
+        throw new Error(`Item ${_id}, was deleted`);
     }
 }
 
 module.exports = {
     roleType,
     emailExist,
-    idExist
+    userIdExist,
+    categoryIdExist,
+    productIdExist
 }

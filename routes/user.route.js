@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 const { 
     roleType, 
     emailExist, 
-    idExist 
+    userIdExist 
 } = require('../helpers/db-validator.helper');
 
 const { 
@@ -21,7 +21,6 @@ const {
 const {
     validator,
     validatorJWT,
-    adminRole, 
     hasRole
 } = require('../middlewares/index');
 
@@ -41,7 +40,7 @@ router.post('/', [
 
 router.put('/:id', [
     check('id', 'Id is not a MongoId').isMongoId(),
-    check('id').custom( (id) => idExist(id) ),
+    check('id').custom( (id) => userIdExist(id) ),
     check('role').custom( (role) => roleType(role) ),
     validator
 ], updateUser);
@@ -51,7 +50,7 @@ router.delete('/:id', [
     // adminRole,
     hasRole('ADMIN_ROLE', 'SALES_ROLE'),
     check('id', 'Id is not a MongoId').isMongoId(),
-    check('id').custom( (id) => idExist(id) ),
+    check('id').custom( (id) => userIdExist(id) ),
     validator
 ], deleteUser);
 
