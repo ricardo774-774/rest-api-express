@@ -4,13 +4,14 @@
 This is an advanced skeleton of a project in nodejs and express, with complete cruds and many interesting sections like:
 JWT Creation
 Logs with google account
-validations
+Validations
+Searches from db
 Etc..
 I invite you to review it and use it in your personal projects, good luck =).
-project updates.
 
 Project updates:
-- New routes and search section in db
+- Upload files and protect them
+- Get files
 
 ### Ejecutar en desarollo
 1. Clonar repositorio
@@ -42,3 +43,6 @@ npm start
 * mongoose // db connection
 * jsonwebtoken // webtoken
 * google-auth-library // google validator token
+* express-fileupload // load files
+* uuid // identification files
+* cloudinary // load files in cloud

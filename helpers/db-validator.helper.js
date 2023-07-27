@@ -5,7 +5,7 @@ const {
     Product
 } = require('../models');
 
-// Check that the role they sent us exists in the database
+// Check that role exists in the database
 const roleType = async(role = '') => {
     const roleExist = await Role.findOne({ role });
     if ( !roleExist ) {
@@ -13,7 +13,7 @@ const roleType = async(role = '') => {
     }
 }
 
-// Check that the email does not exist yet in the database
+// Check that email does not exist yet in the database
 const emailExist =  async(email = '') => {
     const emailFound = await User.findOne({ email });
     if ( emailFound ) {
@@ -21,7 +21,7 @@ const emailExist =  async(email = '') => {
     }
 }
 
-// Check that the id exist in db
+// Check  userId exist in db
 const userIdExist = async(_id = '') => {
     const idFound = await User.findById(_id);
     if ( !idFound ) {
@@ -33,6 +33,7 @@ const userIdExist = async(_id = '') => {
     }
 }
 
+// Check that category exist in db
 const categoryIdExist = async(_id = '') => {
     const idFound = await Category.findById(_id)
     if ( !idFound ) {
@@ -44,6 +45,7 @@ const categoryIdExist = async(_id = '') => {
     }
 }
 
+// Check that product exist in db
 const productIdExist = async(_id = '') => {
     const idFound = await Product.findById(_id)
     if ( !idFound ) {
@@ -55,10 +57,21 @@ const productIdExist = async(_id = '') => {
     }
 }
 
+const collectionValid = (collection = '', collections = []) => {
+    const included = collections.includes(collection);
+
+    if (!included) {
+        throw new Error(`Collection ${collection} is not valid`);
+    }
+
+    return true;
+}
+
 module.exports = {
     roleType,
     emailExist,
     userIdExist,
     categoryIdExist,
-    productIdExist
+    productIdExist,
+    collectionValid
 }
